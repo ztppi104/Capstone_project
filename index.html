@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>combo list box</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+    <section id="nav-bar text">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+
+              <form class="form-inline my-2 my-lg-0 ">
+                <input id="input-field" class="form-control mr-sm-2" type="text" placeholder="Add Text" aria-label="text">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="newElement() ">ADD</button>
+              </form>
+            </div>
+          </nav>
+    </section>
+
+<!--------------------list section---------------------------------------------->
+<section id="function-javascript">
+<div class="container text-center" id="container1">
+    <div class="row">
+        <div class="col-md-5" id="l1">
+            <ul id="myUL" class="list">
+                <li>Hit the gym</li>
+                <li class="checked">Pay bills</li>
+
+              </ul>
+        </div>
+
+        <div class="col-md-2" id="div2">
+            <br><br> <br><br>
+            <button type="button" id="btn1" class="btn btn-primary" onclick="moveright()">MOVE RIGHT</button><br><br>
+            <button type="button" id="btn2" class="btn btn-primary" onclick="moveleft()">MOVE LEFT</button>
+            <br><br> <br><br>
+        </div>
+
+        <div class="col-md-5">
+            <ul id="myUL1"
+             class="list1">
+                <li>Hit the gym</li>
+                <li class="checked">Pay bills</li>
+              </ul>
+        </div>
+    </div>
+</div>
+</section>
+
+
+
+<script>
+    //list item gets highlighed when clicked(list1)
+var list = document.querySelector('.list');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+  ev.target.classList.toggle('checked');
+  }
+}, false);
+
+//list item gets highlighed when clicked(list2)
+var list1 = document.querySelector('.list1');
+list1.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+  ev.target.classList.toggle('checked');
+  }
+}, false);
+
+
+
+//adds the input field text to the first list
+var x = 0;
+var a = Array();
+    function newElement() {
+        var li = document.createElement("li");
+        var inputValue = document.getElementById("input-field").value;
+        var t = document.createTextNode(inputValue);
+        a[x] = t;
+        alert("Element: " + a[x] + " Added at index " + x);
+         x++;
+        li.appendChild(t);
+        if (inputValue ===''){
+            alert("You must write something!");
+         } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+} 
+
+function moveright() {
+
+var myUL =document.getElementById("myUL");
+var myUL1 = document.getElementById("myUL1");
+// checkboxes = document.getElementsByClassName("myUL.checked");
+var checkboxes = document.querySelectorAll("ul.list li.checked");
+console.log(checkboxes);
+for(var i = 0; i < checkboxes.length; i++)
+if(checkboxes[i])
+{
+  var li = document.createElement("li");
+  var inputValue = checkboxes[i].textContent;
+  // console.log(inputValue);
+  
+  var f = document.createTextNode(inputValue);
+  li.appendChild(f);
+  console.log(f);
+  document.getElementById("myUL1").appendChild(li);
+  
+
+  // var list = document.querySelectorAll('.ul.list li.checked');
+// btn.addEventListener('click', function(ev) {
+  // if (ev.target.tagName === 'LI') {
+    // console.log(checkboxes);
+    $('.checked').addClass('hide')
+  // ev.target.classList.toggle('hide');
+  // }
+// }, false);
+//  document.getElementById("myUL").remove(li);
+// document.querySelectorAll("ul.list li.checked").remove(li);
+// var element = document.querySelectorAll("ul.list li.checked");
+// console.log(element);
+// var i;
+// for(i=0; i<=element.length; i++)
+// document.getElementById("myUL").removeChild(element);
+
+
+  // var element = document.getElementsByName(f);
+  //  console.log(element);
+  //  for(i=0; i<=element.length; i++)
+  //  element == null;
+  // //  document.getElementById("myUL").removeChild(element);
+
+//   var list1 = document.querySelector('.ul.list li.checked');
+// list1.addEventListener('click', function(ev) {
+//   if (ev.target.tagName === 'LI') {
+//   ev.target.classList.toggle('checked');
+//   }
+// // }, false);
+// var element = document.querySelectorAll("ul.list li.checked");
+// element.setAttribute("id", node);
+// console.log(element);
+//     // element.parentNode.removeChild(element);
+// // }
+
+ }
+
+}
+
+// var close = document.querySelectorAll("ul.list li.checked");
+// var i;
+// for (i = 0; i = close.length; i++) {
+//   btn1[i].onclick = function () {
+//     var div = this.parentElement;
+//     div.style.display = "none";
+//   }
+// }
+
+
+
+function moveleft() {
+
+var myUL =document.getElementById("myUL");
+var myUL1 = document.getElementById("myUL1");
+// checkboxes = document.getElementsByClassName("myUL.checked");
+var checkboxes = document.querySelectorAll("ul.list1 li.checked");
+console.log(checkboxes);
+for(var i = 0; i < checkboxes.length; i++)
+if(checkboxes[i])
+{
+  var li = document.createElement("li");
+  var inputValue = checkboxes[i].textContent;
+  // console.log(inputValue);
+  
+  var f = document.createTextNode(inputValue);
+  li.appendChild(f);
+  console.log(f);
+  document.getElementById("myUL").appendChild(li);
+
+
+  $('.checked').addClass('hide')
+
+  // var element = document.querySelectorAll("ul.list li.checked");
+  // console.log(element);
+  // // // myUL1.parentNode.removeChild(element);
+  // // btn.addEventListener('click' )
+}
+
+ }
+
+
+</script>
+
+
+    
+</body>
+</html>
